@@ -17,6 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "baseUrl" : "./",
+    "paths": {
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "@auth/*": [
+        "src/app/auth/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
+    }
   }
 }
