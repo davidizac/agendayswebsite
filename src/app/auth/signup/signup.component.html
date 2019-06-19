@@ -1,0 +1,22 @@
+<div class="auth">
+  <div class="content">
+    <div class="content-title">
+      <span>Sign up with Agendays for free</span>
+    </div>
+    <div class="card">
+      <app-input class="card-element" 
+      [label]="'Enter your email to get started.'" 
+      [placeholder]="'email address'" 
+      [errorMessage]="errorMessage"
+      ></app-input>
+      <div class="card-element">
+        <div class="agd-button">
+          <a>Get Started</a>
+        </div>
+        <div class="navigate">
+          <span>Already have an account? <a routerLink="/login">Log in.</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

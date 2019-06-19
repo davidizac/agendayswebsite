@@ -1,0 +1,23 @@
+@import "../../../../assets/variable.scss";
+
+.input{
+    display: flex;
+    flex-direction: column;
+    span{
+        display: block;
+        font-size: 12px;
+    }
+    input{
+        margin-top: 6px;
+        border: 1px solid $agd-gray;;
+        &:focus{
+            outline: none;
+            border: 1px solid $agd-color;
+        }
+        &::placeholder{
+            font-family: $agd-font-family;
+        }
+        padding: 10px;
+        font-size: 15px;
+    }
+}
