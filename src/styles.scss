@@ -29,7 +29,7 @@ span,a,input,small{
             font-size:15px;
         }
         &:hover{
-            background-color: #669cf5;
+            background-color: $google-color-hover;
             a{
                 opacity: 1;
             }
@@ -103,6 +103,7 @@ span,a,input,small{
                     cursor: pointer;
                     font-weight: 700;
                     opacity: 1;
+                    text-decoration: none;
                     &:hover{
                         opacity: 0.8;
                     }
