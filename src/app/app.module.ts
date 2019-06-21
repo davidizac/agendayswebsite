@@ -11,6 +11,7 @@ import {SignupComponent} from './auth/signup/signup.component';
 import { InputComponent } from './shared/components/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AgendaysComponent } from './agendays/agendays.component';
 
 
 
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputComponent,
     LoginComponent,
     SignupComponent,
+    AgendaysComponent,
 
   ],
   imports: [

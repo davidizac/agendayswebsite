@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import {AuthUserService} from '../auth-user.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 enum GoogleProvider {
   id = 'google.com',
@@ -17,16 +15,22 @@ enum GoogleProvider {
 
 export class LoginComponent implements OnInit {
 
-
   errorMessage: string;
   email: string;
   password: string;
   isEmailExist = false;
   isGoogleProvider = false;
+  returnUrl: string;
 
-  constructor( private authUserService: AuthUserService, public auth: AuthService, public afAuth: AngularFireAuth ) { }
+  constructor(
+    private authUserService: AuthUserService,
+    public auth: AuthService ,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.authUserService.logout();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   checkEmail() {
@@ -44,18 +48,13 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.afAuth
-      .auth
-      .signInWithEmailAndPassword(this.email, this.password)
-      .then(value => {
-        console.log(value);
-        this.auth.getUserasObservable().subscribe((user) => {
-          console.log(user);
-        });
-      })
-      .catch(err => {
-        this.errorMessage = 'Invalid password';
-      });
+    this.authUserService.onLogin(this.email, this.password)
+    .then(data => {
+      this.router.navigate([this.returnUrl]);
+    })
+    .catch(error => {
+      this.errorMessage = error;
+    });
   }
 
   notUser() {

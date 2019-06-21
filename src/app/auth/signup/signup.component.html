@@ -1,5 +1,28 @@
+
 <div class="auth">
   <div class="content">
+      <ng-container
+      *ngIf="!isSignedUp; then onSignUp; else signedUp">
+      </ng-container>
+  </div>
+</div>
+
+<ng-template #signedUp>
+  <div>
+    <span>Before continuing, we need to verify your email address. Please check your inbox for a confirmation link.</span>
+    <small>If you do not receive the email at {{email}} within an hour, we can <a>resend it to you.</a></small>
+  </div>
+</ng-template>
+  
+
+<ng-template #onSignUp>
+    <ng-container
+    *ngIf="!isEmailExist; then loggedOut; else onSignIn">
+    </ng-container>
+</ng-template>
+
+<ng-template #loggedOut>
+  <ng-container>
     <div class="content-title">
       <span>Sign up with Agendays for free</span>
     </div>
@@ -20,5 +43,55 @@
         </div>
       </div>
     </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #onSignIn>
+  <ng-container>
+    <div class="content-title">
+      <span>Hi {{email}}!</span>
+    </div>
+    <div class="card">
+      <ng-container
+      *ngIf="isGoogleProvider; then logWithGoogle; else logWithPassword">
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #logWithGoogle>
+  <div class="card-element">
+    <div class="google-signin">
+      <div class="agd-button btn-google">
+        <a (click)="auth.login()">Sign up with Google</a>
+      </div>
+    </div>
+    <div class="navigate google-nav">
+      <span>Prefer to create an account with a password? <a (click)="preferWithPassword()" >Click here.</a></span>
+    </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #logWithPassword>
+  <ng-container>
+    <app-input class="card-element" 
+    [label]="'Enter your email to get started.'" 
+    [placeholder]="'email'" 
+    [errorMessage]="errorMessage"
+    [(ngModel)] = "email"
+    [type]="'email'"
+    ></app-input>
+    <app-input class="card-element" 
+    [label]="'Choose a password with at least 8 characters.'" 
+    [placeholder]="'password'" 
+    [errorMessage]="errorMessage"
+    [(ngModel)] = "password"
+    [type]="'password'"
+    ></app-input>
+    <div class="card-element">
+      <div class="agd-button">
+        <a (click)="onSignUpWithPassword()">Continue</a>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
