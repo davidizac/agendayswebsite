@@ -8,10 +8,12 @@
       [label]="'Enter your email to get started.'" 
       [placeholder]="'email address'" 
       [errorMessage]="errorMessage"
+      [(ngModel)] = "email"
+      [type]="'email'"
       ></app-input>
       <div class="card-element">
         <div class="agd-button">
-          <a>Get Started</a>
+          <a (click)="checkEmail()">Get Started</a>
         </div>
         <div class="navigate">
           <span>Already have an account? <a routerLink="/login">Log in.</a></span>

@@ -1,5 +1,14 @@
+
 <div class="auth">
   <div class="content">
+      <ng-container
+      *ngIf="!isEmailExist; then loggedOut; else onSignIn">
+      </ng-container>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  <ng-container>
     <div class="content-title">
       <span>Log into your Agendays account.</span>
     </div>
@@ -8,15 +17,72 @@
       [label]="'Enter your email to get started.'" 
       [placeholder]="'email address'" 
       [errorMessage]="errorMessage"
+      [(ngModel)] = "email"
+      [type]="'email'"
       ></app-input>
       <div class="card-element">
         <div class="agd-button">
-          <a>Continue</a>
+          <a (click)="checkEmail()">Continue</a>
         </div>
         <div class="navigate">
           <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>
         </div>
       </div>
     </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #onSignIn>
+  <ng-container>
+    <div class="content-title">
+      <span>Welcome back, {{email}}!</span>
+      <small class="not-me">
+        <a (click)="notUser()">(This is not me.)</a>
+      </small>
+    </div>
+    <div class="card">
+      <ng-container
+      *ngIf="isGoogleProvider; then logWithGoogle; else logWithPassword">
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #logWithPassword>
+  <ng-container>
+    <app-input class="card-element" 
+    [label]="'Enter your password'" 
+    [placeholder]="'password'" 
+    [errorMessage]="errorMessage"
+    [(ngModel)] = "password"
+    [type]="'password'"
+    ></app-input>
+    <div class="card-element">
+      <div class="agd-button">
+        <a (click)="onLogin()">Continue</a>
+      </div>
+      <div class="navigate">
+        <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #logWithGoogle>
+  <div class="card-element">
+    <div class="google-signin">
+      <div class="agd-button btn-google">
+        <a (click)="auth.login()">Log in with Google</a>
+      </div>
+    </div>
+    <div class="navigate google-nav">
+      <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>
+    </div>
   </div>
-</div>
+</ng-template>
+
+
+
+
+
+

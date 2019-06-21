@@ -5,7 +5,7 @@ html,body{
     height: 100%;
 }
 
-span,a,input{
+span,a,input,small{
     font-family: $agd-font-family;
     opacity: 0.7;
 }
@@ -19,6 +19,22 @@ span,a,input{
     padding: 0px 20px;
     cursor: pointer;
     display: inline-flex;
+    &.btn-google{
+        font-family: 'Roboto';
+        font-size: 17px;
+        background-color: $google-color;
+        padding: 6px 43px;
+        border-radius: 30px;
+        a{
+            font-size:15px;
+        }
+        &:hover{
+            background-color: #669cf5;
+            a{
+                opacity: 1;
+            }
+        }
+    }
     a{
         opacity: 0.9;
         color: white;
@@ -49,10 +65,17 @@ span,a,input{
         margin-top: 20px;
         .content-title{
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 20px 0;
             span{
                 display: block;
+            }
+            .not-me{
+                color:$agd-color;
+                &:hover{
+                    color:$agd-color-hover;
+                }
             }
         }
         .card{
@@ -62,13 +85,18 @@ span,a,input{
             width: 370px;
             .card-element{
                 &:not(:first-child){
-                    margin-top: 30px;
+                    margin-top: 29px;
                 }
             }
             .navigate{
                 font-size: 11px;
                 margin-top: 20px;
                 display: block;
+                &.google-nav{
+                    font-size: 13px;
+                    display: flex;
+                    justify-content: center;
+                }
                 a{
                     color: $agd-font-color;
                     font-size: 12px;

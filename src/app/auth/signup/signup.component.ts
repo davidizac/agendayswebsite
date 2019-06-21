@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthUserService} from '../auth-user.service';
 
 
 @Component({
@@ -8,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  email: string;
   errorMessage: string;
 
-  constructor() { }
+  constructor( private authUserService: AuthUserService) { }
 
   ngOnInit() {
+  }
+
+  checkEmail() {
+    this.authUserService.isEmailExist(this.email, true)
+    .subscribe(result => {
+      this.errorMessage = null;
+    },
+    (result => {
+      this.errorMessage = result.error;
+    }
+    ));
   }
 
 }

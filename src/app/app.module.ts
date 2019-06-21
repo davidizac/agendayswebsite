@@ -9,6 +9,9 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './auth/login/login.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import { InputComponent } from './shared/components/input/input.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -16,13 +19,16 @@ import { InputComponent } from './shared/components/input/input.component';
     AppComponent,
     InputComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseUrl),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

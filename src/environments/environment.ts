@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: 'agendays-58b47.appspot.com',
     messagingSenderId: '25958110232',
     appId: '1:25958110232:web:1f2babe016875cd9'
-  }
+  },
+  isEmailExist: 'https://us-central1-agendays-58b47.cloudfunctions.net/isEmailExist'
 };
 
 /*

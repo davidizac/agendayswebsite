@@ -1,4 +1,5 @@
 <div class="input">
-  <span>{{label}}</span>
-  <input placeholder="{{placeholder}}"/>
+  <span class="label">{{label}}</span>
+  <input type="{{type}}" [(ngModel)]="text" [ngClass]="{'error-message':errorMessage, 'error-message-end':!errorMessage}" placeholder="{{placeholder}}" (keyup)="propagateChangeToParent()" />
+  <span class="error">{{errorMessage}}</span>
 </div>
