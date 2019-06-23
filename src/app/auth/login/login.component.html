@@ -1,6 +1,9 @@
 
 <div class="auth">
   <div class="content">
+    <div class="logo">
+        <img src="'../../../../../assets/images/agendays-logo.png">
+    </div>
       <ng-container
       *ngIf="!isEmailExist; then loggedOut; else onSignIn">
       </ng-container>
@@ -10,7 +13,7 @@
 <ng-template #loggedOut>
   <ng-container>
     <div class="content-title">
-      <span>Log into your Agendays account.</span>
+      <span>Login</span>
     </div>
     <div class="card">
       <app-input class="card-element" 
@@ -21,9 +24,9 @@
       [type]="'email'"
       ></app-input>
       <div class="card-element">
-        <div class="agd-button">
-          <a (click)="checkEmail()">Continue</a>
-        </div>
+        <a (click)="checkEmail()" class="agd-button">
+          <span>Continue</span>
+        </a>
         <div class="navigate">
           <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>
         </div>
@@ -58,9 +61,9 @@
     [type]="'password'"
     ></app-input>
     <div class="card-element">
-      <div class="agd-button">
-        <a (click)="onLogin()">Continue</a>
-      </div>
+      <a (click)="onLogin()" class="agd-button">
+          <span>Continue</span>
+      </a>
       <div class="navigate">
         <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>
       </div>
@@ -71,9 +74,9 @@
 <ng-template #logWithGoogle>
   <div class="card-element">
     <div class="google-signin">
-      <div class="agd-button btn-google">
-        <a (click)="auth.login()">Log in with Google</a>
-      </div>
+      <a (click)="auth.login()" class="agd-button btn-google">
+          <span>Log in with Google</span>
+      </a>
     </div>
     <div class="navigate google-nav">
       <span>Don't have an account? <a routerLink="/signup" >Sign up.</a></span>

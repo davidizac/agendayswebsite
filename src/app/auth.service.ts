@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import {AuthUserService} from './auth/auth-user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var gapi: any;
 
@@ -12,10 +14,18 @@ export class AuthService {
 
   user$: Observable<firebase.User>;
   calendarItems: any[];
+  returnUrl: string;
 
-  constructor(public afAuth: AngularFireAuth) {
+
+  constructor(
+    public afAuth: AngularFireAuth,
+    private route: ActivatedRoute,
+    public authUserService: AuthUserService,
+    private router: Router
+    ) {
     this.initClient();
     this.user$ = afAuth.authState;
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // Initialize the Google API client with desired scopes
@@ -40,9 +50,9 @@ export class AuthService {
     const googleAuth = gapi.auth2.getAuthInstance();
     const googleUser = await googleAuth.signIn();
     const token = googleUser.getAuthResponse().id_token;
-    console.log(googleUser);
     const credential = auth.GoogleAuthProvider.credential(token);
     await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
+    this.router.navigate([this.returnUrl]);
   }
 
 

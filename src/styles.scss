@@ -14,37 +14,32 @@ span,a,input,small{
     background-color: $agd-color;
     border-radius: 16px;
     height: 33px;
-    display: flex;
     align-items: center;
     padding: 0px 20px;
     cursor: pointer;
     display: inline-flex;
+    opacity: 1;
     &.btn-google{
         font-family: 'Roboto';
         font-size: 17px;
         background-color: $google-color;
         padding: 6px 43px;
         border-radius: 30px;
-        a{
+        span{
             font-size:15px;
         }
         &:hover{
             background-color: $google-color-hover;
-            a{
-                opacity: 1;
-            }
         }
     }
-    a{
-        opacity: 0.9;
+    span{
+        opacity: 1;
         color: white;
         font-size: 13px;
     }
     &:hover{
         background-color: $agd-color-hover;
-        a{
-            opacity: 1;
-        }
+
     }
     &:active{
         background-color: $agd-color
@@ -57,12 +52,17 @@ span,a,input,small{
     align-items: center;
     height: 100%;
     margin: 0;
-    padding: 65px 35px;
     .content{
         height: 100%;
         margin: auto;
         padding: 0 20px;
         margin-top: 20px;
+        .logo{
+            text-align: center;
+            img{
+                width: 200px;
+            }
+        }
         .content-title{
             display: flex;
             flex-direction: column;
@@ -70,6 +70,10 @@ span,a,input,small{
             padding: 20px 0;
             span{
                 display: block;
+                font-size: 22px;
+                font-weight: bold;
+                color:$agd-color;
+                opacity: 1;
             }
             .not-me{
                 color:$agd-color;
@@ -85,7 +89,10 @@ span,a,input,small{
             width: 370px;
             .card-element{
                 &:not(:first-child){
-                    margin-top: 29px;
+                    margin-top: 17px;
+                    div{
+                        margin-top: 17px;
+                    }
                 }
             }
             .navigate{
@@ -98,7 +105,7 @@ span,a,input,small{
                     justify-content: center;
                 }
                 a{
-                    color: $agd-font-color;
+                    color: $agd-color;
                     font-size: 12px;
                     cursor: pointer;
                     font-weight: 700;
