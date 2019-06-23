@@ -13,7 +13,7 @@
 <ng-template #loggedOut>
   <ng-container>
     <div class="content-title">
-      <span>Login</span>
+      <span>Log into your account.</span>
     </div>
     <div class="card">
       <app-input class="card-element" 
@@ -75,6 +75,7 @@
   <div class="card-element">
     <div class="google-signin">
       <a (click)="auth.login()" class="agd-button btn-google">
+          <img src="../../../assets/images/google-logo.png">
           <span>Log in with Google</span>
       </a>
     </div>

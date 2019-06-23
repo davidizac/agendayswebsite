@@ -11,9 +11,9 @@
 </div>
 
 <ng-template #signedUp>
-  <div>
+  <div class="email-sent">
     <span>Before continuing, we need to verify your email address. Please check your inbox for a confirmation link.</span>
-    <small>If you do not receive the email at {{email}} within an hour, we can <a>resend it to you.</a></small>
+    <small>If you do not receive the email at <strong>{{email}}</strong> within an hour, we can <a>resend it to you.</a></small>
   </div>
 </ng-template>
   
@@ -27,7 +27,7 @@
 <ng-template #loggedOut>
   <ng-container>
     <div class="content-title">
-      <span>Signup</span>
+      <span>Sign up with Agendays for free.</span>
     </div>
     <div class="card">
       <app-input class="card-element" 
@@ -64,9 +64,13 @@
 
 <ng-template #logWithGoogle>
   <div class="card-element">
+    <div class="card-text">
+      <p>The easiest way for you to sign up is with Google. This will automatically connect your calendar so you can start using Agendays right away!</p>
+    </div>
     <div class="google-signin">
       <a (click)="auth.login()" class="agd-button btn-google">
-          <span>Sign up with Google</span>
+        <img src="../../../assets/images/google-logo.png">
+        <span>Sign up with Google</span>
       </a>
     </div>
     <div class="navigate google-nav">
