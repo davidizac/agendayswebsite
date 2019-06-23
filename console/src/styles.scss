@@ -5,7 +5,7 @@ html,body{
     height: 100%;
 }
 
-span,a,input,small{
+span,a,input,small,p{
     font-family: $agd-font-family;
     opacity: 0.7;
 }
@@ -23,8 +23,15 @@ span,a,input,small{
         font-family: 'Roboto';
         font-size: 17px;
         background-color: $google-color;
-        padding: 6px 43px;
+        padding: 6px 17px;
         border-radius: 30px;
+        width: 215px;
+        justify-content: flex-start;
+        display: flex;
+        img{
+            width: 21px;
+            margin-right: 14px;
+        }
         span{
             font-size:15px;
         }
@@ -54,13 +61,17 @@ span,a,input,small{
     margin: 0;
     .content{
         height: 100%;
-        margin: auto;
-        padding: 0 20px;
         margin-top: 20px;
+        max-width: 475px;
+        width: 100%;
+    
         .logo{
             text-align: center;
             img{
                 width: 200px;
+                @media only screen and (max-width: 800px){
+                    width: 150px;
+                }
             }
         }
         .content-title{
@@ -68,9 +79,9 @@ span,a,input,small{
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
+            margin-top: 30px;
             span{
                 display: block;
-                font-size: 22px;
                 font-weight: bold;
                 color:$agd-color;
                 opacity: 1;
@@ -84,14 +95,22 @@ span,a,input,small{
         }
         .card{
             border: 1px solid $agd-gray;
-            padding: 40px 40px;
-            margin: auto;
-            width: 370px;
+            margin: 0 20px;
+            padding: 30px;
+            @media only screen and (max-width: 800px){
+                padding: 30px 10px;
+            }
             .card-element{
                 &:not(:first-child){
                     margin-top: 17px;
                     div{
                         margin-top: 17px;
+                    }
+                }
+                .card-text{
+                    margin-bottom: 30px;
+                    p{
+                        font-size: 14px;
                     }
                 }
             }
@@ -115,6 +134,22 @@ span,a,input,small{
                         opacity: 0.8;
                     }
                 }
+            }
+        }
+        .email-sent{
+            padding: 0 12px;
+            span{
+                display: block;
+                text-align: center;
+                margin-top: 30px;
+                font-weight: 700;
+            }
+            small{
+                font-size: 12px;
+                display: block;
+                margin-top: 41px;
+                text-align: center;
+                
             }
         }
     }
