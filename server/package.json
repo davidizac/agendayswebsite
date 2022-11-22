@@ -28,7 +28,7 @@
     "passport-local": "1.0.0",
     "request": "2.88.0",
     "rimraf": "2.6.2",
-    "socket.io": "2.0.4"
+    "socket.io": "2.5.0"
   },
   "devDependencies": {},
   "spec": {}
